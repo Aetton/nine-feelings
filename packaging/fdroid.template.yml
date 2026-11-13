@@ -1,7 +1,7 @@
-# Replace repository URL and release tag after public repository approval.
-# This is a preparation template, not an already-submitted F-Droid entry.
+# Copy to fdroiddata/metadata/ru.tochka.mood.yml.
+# Submission is tracked separately; this file does not imply acceptance.
 Categories:
-  - Writing
+  - Mental Health
 License: MIT
 SourceCode: 'https://github.com/Aetton/nine-feelings'
 IssueTracker: 'https://github.com/Aetton/nine-feelings/issues'
