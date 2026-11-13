@@ -1,6 +1,6 @@
 # F-Droid inclusion request
 
-Status: prepared, not submitted. No F-Droid issue or merge request exists yet.
+Status: submitted for initial review on 2026-11-13: [RFP #4791](https://gitlab.com/fdroid/rfp/-/work_items/4791). The request is open; this is not acceptance into the F-Droid catalog. No fdroiddata merge request has been submitted.
 
 Title: Nine Feelings (ru.tochka.mood)
 
@@ -52,4 +52,4 @@ All diary data stays on the device unless the user explicitly exports it. There 
 
 The current RFP template describes its issues as an automated review starting point and directs actual inclusion submissions to a fdroiddata merge request. Submit the validated recipe to a fork of [fdroiddata](https://gitlab.com/fdroid/fdroiddata), following its CONTRIBUTING instructions. If an initial automated review is useful, use this request text in [RFP](https://gitlab.com/fdroid/rfp/-/issues/new), avoiding duplicate submissions.
 
-Before submitting, recheck for duplicate requests and replace the status above with the real issue or merge-request URL only after submission succeeds.
+Initial RFP submission succeeded. Continue packaging through a fdroiddata merge request as required by the maintainers, linking RFP #4791 rather than opening another request.
