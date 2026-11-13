@@ -48,17 +48,16 @@ public final class MoodStore extends SQLiteOpenHelper {
             + " '',uuid TEXT NOT NULL)");
     db.execSQL("CREATE INDEX entries_time ON entries(time,_id)");
     db.execSQL("CREATE UNIQUE INDEX entries_uuid ON entries(uuid)");
-    createCatalog(db);
+    createCatalog(db, Emotion.defaults());
   }
 
-  private void createCatalog(SQLiteDatabase db) {
+  private void createCatalog(SQLiteDatabase db, Emotion[] defaults) {
     db.execSQL(
         "CREATE TABLE emotions (emotion_key TEXT PRIMARY KEY,title TEXT NOT NULL,symbol TEXT NOT"
             + " NULL,color INTEGER NOT NULL)");
     db.execSQL(
         "CREATE TABLE slots (position INTEGER PRIMARY KEY CHECK(position BETWEEN 0 AND"
             + " 8),emotion_key TEXT NOT NULL REFERENCES emotions(emotion_key))");
-    Emotion[] defaults = Emotion.defaults();
     for (int i = 0; i < defaults.length; i++) {
       insertEmotion(db, defaults[i]);
       ContentValues slot = new ContentValues();
@@ -71,7 +70,7 @@ public final class MoodStore extends SQLiteOpenHelper {
   @Override
   public void onUpgrade(SQLiteDatabase db, int oldV, int newV) {
     // The helper wraps migration in a transaction; old entry keys match defaults.
-    if (oldV == 1) createCatalog(db);
+    if (oldV == 1) createCatalog(db, Emotion.legacyDefaults());
     if (oldV < 3) {
       db.execSQL("ALTER TABLE entries ADD COLUMN uuid TEXT");
       db.execSQL("UPDATE entries SET uuid=lower(hex(randomblob(16))) WHERE uuid IS NULL");

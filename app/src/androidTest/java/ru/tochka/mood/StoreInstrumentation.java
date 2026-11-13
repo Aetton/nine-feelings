@@ -124,7 +124,7 @@ public final class StoreInstrumentation extends Instrumentation {
             Emotion changed = s.slots().get(6);
             s.add(changed);
             check(!original.key.equals(changed.key), "new identity");
-            check(s.get(old).emotion.title.equals("Тревога"), "old name");
+            check(s.get(old).emotion.title.equals(original.title), "old name");
             check(s.get(old).emotion.symbol.equals(original.symbol), "old symbol");
             check(s.get(old).comment.equals("old comment"), "old comment");
             MoodStore.Statistics stats = s.statistics(0);
@@ -155,6 +155,8 @@ public final class StoreInstrumentation extends Instrumentation {
           }
           try (MoodStore s = new MoodStore(getTargetContext(), name)) {
             check(s.slots().size() == 9 && s.count() == 1, "migration keeps data");
+            check(s.get(1).emotion.title.equals("Тревога"), "legacy emotion name retained");
+            check(s.get(1).emotion.symbol.equals("〰"), "legacy symbol retained");
             check(
                 s.get(1).comment.equals("сохранить") && s.get(1).time == 123456,
                 "migration values");
@@ -177,7 +179,7 @@ public final class StoreInstrumentation extends Instrumentation {
             db.execSQL(
                 "CREATE TABLE slots(position INTEGER PRIMARY KEY,emotion_key TEXT NOT NULL)");
             for (int i = 0; i < 9; i++) {
-              Emotion e = Emotion.defaults()[i];
+              Emotion e = Emotion.legacyDefaults()[i];
               db.execSQL(
                   "INSERT INTO emotions VALUES(?,?,?,?)",
                   new Object[] {e.key, e.title, e.symbol, e.color});

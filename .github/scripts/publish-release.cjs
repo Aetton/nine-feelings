@@ -1,7 +1,7 @@
 // Publishes pre-signed public artifacts; no signing key is sent to GitHub.
 const fs = require('node:fs');
 const crypto = require('node:crypto');
-const config = JSON.parse(fs.readFileSync('packaging/release-0.4.1.json', 'utf8'));
+const config = JSON.parse(fs.readFileSync('packaging/release-0.4.2.json', 'utf8'));
 const repo = process.env.GITHUB_REPOSITORY;
 if (repo !== 'Aetton/nine-feelings') throw new Error('Unexpected repository');
 const token = process.env.GITHUB_TOKEN;
@@ -16,7 +16,7 @@ async function api(path, options = {}) {
 }
 async function main() {
   const gradle = fs.readFileSync('app/build.gradle', 'utf8');
-  if (!gradle.includes("versionName '0.4.1'") || !gradle.includes('versionCode 5')) throw new Error('Release/source version mismatch');
+  if (!gradle.includes("versionName '0.4.2'") || !gradle.includes('versionCode 6')) throw new Error('Release/source version mismatch');
   const verified = [];
   for (const asset of config.assets) {
     const blob = await api(`/contents/${asset.name}?ref=${config.assetCommit}`);
@@ -29,7 +29,7 @@ async function main() {
   verified.push({ name: 'SHA256SUMS.txt', bytes: Buffer.from(sums), contentType: 'text/plain' });
   let release = await api(`/releases/tags/${config.tag}`, { allow404: true });
   if (release && !release.draft) { console.log(`Already published: ${release.html_url}`); return; }
-  if (!release) release = await api('/releases', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tag_name: config.tag, target_commitish: process.env.GITHUB_SHA, name: 'Девять чувств / Nine Feelings 0.4.1', body: config.notes, draft: true, prerelease: true }) });
+  if (!release) release = await api('/releases', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tag_name: config.tag, target_commitish: process.env.GITHUB_SHA, name: 'Девять чувств / Nine Feelings 0.4.2', body: config.notes, draft: true, prerelease: true }) });
   if (!release.upload_url.startsWith(`https://uploads.github.com/repos/${repo}/releases/`)) throw new Error('Unexpected upload destination');
   for (const asset of verified) {
     const existing = release.assets.find(a => a.name === asset.name);
