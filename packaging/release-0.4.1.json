@@ -1,0 +1,15 @@
+{
+  "tag": "v0.4.1",
+  "assetCommit": "d660258583c21ee0b646b2c6ce1eca1d7e04855f",
+  "assets": [
+    {
+      "name": "nine-feelings-0.4.1-release.apk",
+      "sha256": "d68c218fdb0bd2f3ccf4dc4afc809d04492a87c04a87559f80dad7327e342a95"
+    },
+    {
+      "name": "nine-feelings-0.4.1-release.aab",
+      "sha256": "3210e40e5913d61e8257f8020586c79d34b264dc371e949668518ef889d89aa8"
+    }
+  ],
+  "notes": "Первый публичный тестовый выпуск / First public preview release.\n\nЛокальный дневник эмоций: девять редактируемых кнопок, виджеты 2×2 и 3×3, комментарии, история, статистика, тёмная тема и ручные JSON-копии. Android 8.0+. Интерфейс пока на русском языке.\n\n0.4.1: поле комментария начинается с одной строки и растёт по мере ввода.\n\nУстановка: скачайте release.apk. Это новая релизная подпись. Если установлена ранняя Preview-сборка, сначала сохраните JSON-копию в настройках, затем переходите на релиз и восстановите копию. Не удаляйте прототип без копии. APK и AAB подписаны локальным приватным ключом; ключ в репозитории и CI отсутствует.\n\nOffline by design: no accounts, advertising, analytics or internet permission. Backups are readable JSON, not encrypted. Not a medical device.\n\nSHA-256 checksums are attached. Sources are available at this release tag. F-Droid inclusion has not been requested yet."
+}

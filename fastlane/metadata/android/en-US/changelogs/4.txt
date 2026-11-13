@@ -1,0 +1,1 @@
+First public-release candidate. Adds validated JSON backups, non-destructive database migrations, paginated history, database-side statistics, editor draft restoration, background widget writes, native dark theme and explicit privacy controls. Built with a standard Gradle wrapper and covered by device integration tests.

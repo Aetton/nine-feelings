@@ -1,0 +1,20 @@
+# Replace repository URL and release tag after public repository approval.
+# This is a preparation template, not an already-submitted F-Droid entry.
+Categories:
+  - Writing
+License: MIT
+SourceCode: 'https://github.com/Aetton/nine-feelings'
+IssueTracker: 'https://github.com/Aetton/nine-feelings/issues'
+RepoType: git
+Repo: 'https://github.com/Aetton/nine-feelings.git'
+Builds:
+  - versionName: 0.4.1
+    versionCode: 5
+    commit: 'v0.4.1'
+    subdir: app
+    gradle:
+      - yes
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: 0.4.1
+CurrentVersionCode: 5
