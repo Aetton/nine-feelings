@@ -1,8 +1,0 @@
-Nine Feelings direct-distribution release certificate
-Package: ru.tochka.mood
-Alias: release
-Algorithm: RSA 3072 / SHA256withRSA
-Certificate SHA-256: 8b4bab52e3d0c61895fc37864c90be378f0b7e067e1d2f6ddaadf8fe50009c23
-
-This is a public certificate fingerprint, not a private key.
-Prototype/preview APKs and F-Droid builds can use different signing certificates.
